@@ -1,6 +1,16 @@
 // import './App.css';
 
+import { useReducer } from 'react';
+
+const initialState = {
+  count: 0,
+};
+
+const reducer = (state, action) => {};
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <div className="App">
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
