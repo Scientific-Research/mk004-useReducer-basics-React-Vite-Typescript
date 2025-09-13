@@ -77,6 +77,11 @@ function App() {
           <button onClick={() => handleResetButton(-100)}>Reset to -100</button>
         </div>
       </div>
+
+      <div className="inputSave">
+        <input className="input" type="text" />
+        <button className="btnSave">Save</button>
+      </div>
     </div>
   );
 }

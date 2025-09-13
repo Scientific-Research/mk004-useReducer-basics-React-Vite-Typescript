@@ -44,4 +44,20 @@ body {
       margin-top: 1rem;
     }
   }
+
+  .inputSave {
+    display: flex;
+    gap: 1rem;
+
+    .input {
+      margin-top: 1.6rem;
+      height: 2.7rem;
+    }
+
+    .btnSave {
+      padding: 0.1rem;
+      font-size: 2rem;
+      margin-top: 1.5rem;
+    }
+  }
 }
