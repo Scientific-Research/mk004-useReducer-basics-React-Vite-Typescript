@@ -41,6 +41,8 @@ function App() {
     <div className="App">
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
       <h3>Welcome to this Site!</h3>
+      <p className="count">Count: {state.count}</p>
+
       <div className="buttonArea">
         <button className="increaseBtn" onClick={handleIncreaseCount}>
           +
@@ -48,7 +50,6 @@ function App() {
 
         <button onClick={handleDecreaseCount}>-</button>
       </div>
-      <p className="count">Count: {state.count}</p>
     </div>
   );
 }
