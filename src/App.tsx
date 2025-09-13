@@ -4,14 +4,16 @@ import { useReducer } from 'react';
 
 const initialState: IState = {
   count: 0,
+  value: 0,
 };
 
 interface IState {
   count: number;
+  value: number;
 }
 
 interface IAction {
-  type: 'increment' | 'decrement' | 'reset';
+  type: 'increment' | 'decrement' | 'reset' | 'save' | 'input';
   payload: number;
 }
 
@@ -25,6 +27,11 @@ const reducer = (state: IState, action: IAction) => {
   } else if (action.type === 'reset') {
     // _state.count = 0;
     _state.count = action.payload;
+  } else if (action.type === 'input') {
+    _state.value = action.payload;
+  } else if (action.type === 'save') {
+    _state.count = action.payload;
+    // _state.count = _state.value;
   }
 
   return _state;
@@ -58,6 +65,19 @@ function App() {
     }
   };
 
+  const handleSaveButton = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    // dispatch({ type: 'save', payload: Number(e.target.value) });
+    dispatch({ type: 'save', payload: state.value });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // console.log(e.target.value);
+    // value = e.target.value;
+    dispatch({ type: 'input', payload: Number(e.target.value) });
+  };
+
   return (
     <div className="App">
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
@@ -79,8 +99,14 @@ function App() {
       </div>
 
       <div className="inputSave">
-        <input className="input" type="text" />
-        <button className="btnSave">Save</button>
+        <input
+          className="input"
+          type="text"
+          onChange={(e) => handleInputChange(e)}
+        />
+        <button className="btnSave" onClick={(e) => handleSaveButton(e)}>
+          Save
+        </button>
       </div>
     </div>
   );
