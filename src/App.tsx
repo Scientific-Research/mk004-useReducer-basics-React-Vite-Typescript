@@ -49,8 +49,9 @@ function App() {
         </button>
 
         <button onClick={handleDecreaseCount}>-</button>
-        <div>
-          <button className="btnReset">Reset</button>
+
+        <div className="btnReset">
+          <button>Reset</button>
         </div>
       </div>
     </div>

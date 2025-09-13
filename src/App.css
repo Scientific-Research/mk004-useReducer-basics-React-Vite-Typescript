@@ -35,7 +35,7 @@ body {
       width: 3rem;
     }
 
-    .btnReset {
+    .btnReset button {
       width: 6rem;
       /* padding: 0.25rem; */
       margin-top: 1rem;
