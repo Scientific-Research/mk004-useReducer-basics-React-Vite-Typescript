@@ -15,4 +15,8 @@ body {
     color: rgb(217, 217, 20);
     margin-bottom: 1rem;
   }
+
+  .count {
+    margin-top: 1rem;
+  }
 }
