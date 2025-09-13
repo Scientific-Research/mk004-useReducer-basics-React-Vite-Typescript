@@ -29,10 +29,23 @@ const reducer = (state: IState, action: IAction) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const handleIncreaseCount = () => {
+    dispatch({ type: 'increment' });
+  };
+
+  const handleDecreaseCount = () => {
+    dispatch({ type: 'decrement' });
+  };
+
   return (
     <div className="App">
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
       <h3>Welcome to this Site!</h3>
+      <div className="buttonArea">
+        <button className='increaseBtn' onClick={handleIncreaseCount}>+</button>
+
+        <button onClick={handleDecreaseCount}>-</button>
+      </div>
       <p className="count">Count: {state.count}</p>
     </div>
   );

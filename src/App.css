@@ -18,5 +18,21 @@ body {
 
   .count {
     margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .buttonArea {
+    /* display: flex; */
+    /* gap: 0.5rem; */
+    margin-top: 1rem;
+
+    .increaseBtn {
+      margin-right: 0.7rem;
+    }
+
+    button {
+      font-size: 2rem;
+      width: 3rem;
+    }
   }
 }
