@@ -41,9 +41,21 @@ function App() {
     dispatch({ type: 'decrement', payload: 0 });
   };
 
-  const handleResetButton = () => {
+  const handleResetButton = (num: number) => {
     // dispatch({ type: 'reset'});
-    dispatch({ type: 'reset', payload: 100 });
+    switch (num) {
+      case 0:
+        dispatch({ type: 'reset', payload: 0 });
+        break;
+
+      case 100:
+        dispatch({ type: 'reset', payload: 100 });
+        break;
+
+      case -100:
+        dispatch({ type: 'reset', payload: -100 });
+        break;
+    }
   };
 
   return (
@@ -60,7 +72,9 @@ function App() {
         <button onClick={handleDecreaseCount}>-</button>
 
         <div className="btnReset">
-          <button onClick={handleResetButton}>Reset</button>
+          <button onClick={() => handleResetButton(0)}>Reset to 0</button>
+          <button onClick={() => handleResetButton(100)}>Reset to 100</button>
+          <button onClick={() => handleResetButton(-100)}>Reset to -100</button>
         </div>
       </div>
     </div>
