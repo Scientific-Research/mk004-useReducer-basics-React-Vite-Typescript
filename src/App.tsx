@@ -12,6 +12,7 @@ interface IState {
 
 interface IAction {
   type: 'increment' | 'decrement' | 'reset';
+  payload: number;
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -22,7 +23,8 @@ const reducer = (state: IState, action: IAction) => {
   } else if (action.type === 'decrement') {
     _state.count--;
   } else if (action.type === 'reset') {
-    _state.count = 0;
+    // _state.count = 0;
+    _state.count = action.payload;
   }
 
   return _state;
@@ -32,15 +34,16 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleIncreaseCount = () => {
-    dispatch({ type: 'increment' });
+    dispatch({ type: 'increment', payload: 0 });
   };
 
   const handleDecreaseCount = () => {
-    dispatch({ type: 'decrement' });
+    dispatch({ type: 'decrement', payload: 0 });
   };
 
   const handleResetButton = () => {
-    dispatch({ type: 'reset' });
+    // dispatch({ type: 'reset'});
+    dispatch({ type: 'reset', payload: 100 });
   };
 
   return (
