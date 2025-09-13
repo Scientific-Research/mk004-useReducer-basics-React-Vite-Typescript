@@ -65,9 +65,7 @@ function App() {
     }
   };
 
-  const handleSaveButton = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleSaveButton = () => {
     // dispatch({ type: 'save', payload: Number(e.target.value) });
     dispatch({ type: 'save', payload: state.value });
   };
@@ -104,7 +102,7 @@ function App() {
           type="text"
           onChange={(e) => handleInputChange(e)}
         />
-        <button className="btnSave" onClick={(e) => handleSaveButton(e)}>
+        <button className="btnSave" onClick={() => handleSaveButton()}>
           Save
         </button>
       </div>
