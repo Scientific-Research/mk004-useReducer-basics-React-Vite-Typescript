@@ -11,7 +11,7 @@ interface IState {
 }
 
 interface IAction {
-  type: 'increment' | 'decrement';
+  type: 'increment' | 'decrement' | 'reset';
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -21,6 +21,8 @@ const reducer = (state: IState, action: IAction) => {
     _state.count++;
   } else if (action.type === 'decrement') {
     _state.count--;
+  } else if (action.type === 'reset') {
+    _state.count = 0;
   }
 
   return _state;
@@ -37,6 +39,10 @@ function App() {
     dispatch({ type: 'decrement' });
   };
 
+  const handleResetButton = () => {
+    dispatch({ type: 'reset' });
+  };
+
   return (
     <div className="App">
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
@@ -51,7 +57,7 @@ function App() {
         <button onClick={handleDecreaseCount}>-</button>
 
         <div className="btnReset">
-          <button>Reset</button>
+          <button onClick={handleResetButton}>Reset</button>
         </div>
       </div>
     </div>
