@@ -6,7 +6,25 @@ const initialState = {
   count: 0,
 };
 
-const reducer = (state, action) => {};
+interface IState {
+  count: number;
+}
+
+interface IAction {
+  type: 'increment' | 'decrement';
+}
+
+const reducer = (state: IState, action: IAction) => {
+  const _state = { ...state };
+
+  if (action.type === 'increment') {
+    _state.count++;
+  } else if (action.type === 'decrement') {
+    _state.count--;
+  }
+
+  return _state;
+};
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
