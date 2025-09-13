@@ -2,7 +2,7 @@
 
 import { useReducer } from 'react';
 
-const initialState = {
+const initialState: IState = {
   count: 0,
 };
 
@@ -42,7 +42,9 @@ function App() {
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
       <h3>Welcome to this Site!</h3>
       <div className="buttonArea">
-        <button className='increaseBtn' onClick={handleIncreaseCount}>+</button>
+        <button className="increaseBtn" onClick={handleIncreaseCount}>
+          +
+        </button>
 
         <button onClick={handleDecreaseCount}>-</button>
       </div>
