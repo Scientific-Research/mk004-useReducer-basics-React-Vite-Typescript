@@ -68,6 +68,14 @@ function App() {
   const handleSaveButton = () => {
     // dispatch({ type: 'save', payload: Number(e.target.value) });
     dispatch({ type: 'save', payload: state.value });
+    // console.log(typeof state.value);
+    // console.log(state.value);
+
+    // state.value === NaN ? <p>{state.value} is not a number!</p> : '';
+    // Number.isNaN(state.value) ? <p>{state.value} is not a number!</p> : '';
+    Number.isNaN(state.value)
+      ? console.log(`${state.value} is not a number!`)
+      : console.log(`${state.value} is a number!`);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
