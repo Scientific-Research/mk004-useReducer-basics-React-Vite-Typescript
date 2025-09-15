@@ -119,6 +119,8 @@ function App() {
           value={state.emptyInput}
           className="input"
           type="text"
+          autoFocus
+          placeholder="Enter a number here!"
           onChange={(e) => handleInputChange(e)}
         />
         <button className="btnSave" onClick={() => handleSaveButton()}>
