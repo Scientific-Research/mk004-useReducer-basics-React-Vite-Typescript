@@ -4,17 +4,17 @@ import { useReducer } from 'react';
 
 const initialState: IState = {
   count: 0,
-  value: 0,
+  value: '',
 };
 
 interface IState {
   count: number;
-  value: number;
+  value: string;
 }
 
 interface IAction {
   type: 'increment' | 'decrement' | 'reset' | 'save' | 'input';
-  payload: number;
+  payload: string;
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -26,11 +26,11 @@ const reducer = (state: IState, action: IAction) => {
     _state.count--;
   } else if (action.type === 'reset') {
     // _state.count = 0;
-    _state.count = action.payload;
+    _state.count = Number(action.payload);
   } else if (action.type === 'input') {
     _state.value = action.payload;
   } else if (action.type === 'save') {
-    _state.count = action.payload;
+    _state.count = Number(action.payload);
     // _state.count = _state.value;
   }
 
@@ -41,26 +41,26 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleIncreaseCount = () => {
-    dispatch({ type: 'increment', payload: 0 });
+    dispatch({ type: 'increment', payload: '0' });
   };
 
   const handleDecreaseCount = () => {
-    dispatch({ type: 'decrement', payload: 0 });
+    dispatch({ type: 'decrement', payload: '0' });
   };
 
   const handleResetButton = (num: number) => {
     // dispatch({ type: 'reset'});
     switch (num) {
       case 0:
-        dispatch({ type: 'reset', payload: 0 });
+        dispatch({ type: 'reset', payload: '0' });
         break;
 
       case 100:
-        dispatch({ type: 'reset', payload: 100 });
+        dispatch({ type: 'reset', payload: '100' });
         break;
 
       case -100:
-        dispatch({ type: 'reset', payload: -100 });
+        dispatch({ type: 'reset', payload: '-100' });
         break;
     }
   };
@@ -72,8 +72,10 @@ function App() {
     // console.log(state.value);
 
     // state.value === NaN ? <p>{state.value} is not a number!</p> : '';
+
     // Number.isNaN(state.value) ? <p>{state.value} is not a number!</p> : '';
-    Number.isNaN(state.value)
+
+    isNaN(Number(state.value))
       ? console.log(`${state.value} is not a number!`)
       : console.log(`${state.value} is a number!`);
   };
@@ -81,7 +83,7 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.value);
     // value = e.target.value;
-    dispatch({ type: 'input', payload: Number(e.target.value) });
+    dispatch({ type: 'input', payload: e.target.value });
   };
 
   return (
