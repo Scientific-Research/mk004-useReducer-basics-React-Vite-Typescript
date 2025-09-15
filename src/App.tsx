@@ -20,7 +20,7 @@ interface IState {
 
 interface IAction {
   type: 'increment' | 'decrement' | 'reset' | 'save' | 'input';
-  payload: string;
+  payload: string | number;
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -34,7 +34,7 @@ const reducer = (state: IState, action: IAction) => {
     // _state.count = 0;
     _state.count = Number(action.payload);
   } else if (action.type === 'input') {
-    _state.value = action.payload;
+    _state.value = String(action.payload);
   } else if (action.type === 'save') {
     _state.count = Number(action.payload);
     // _state.value = action.payload;
@@ -49,26 +49,26 @@ function App() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleIncreaseCount = () => {
-    dispatch({ type: 'increment', payload: '0' });
+    dispatch({ type: 'increment', payload: 0 });
   };
 
   const handleDecreaseCount = () => {
-    dispatch({ type: 'decrement', payload: '0' });
+    dispatch({ type: 'decrement', payload: 0 });
   };
 
   const handleResetButton = (num: number) => {
     // dispatch({ type: 'reset'});
     switch (num) {
       case 0:
-        dispatch({ type: 'reset', payload: '0' });
+        dispatch({ type: 'reset', payload: 0 });
         break;
 
       case 100:
-        dispatch({ type: 'reset', payload: '100' });
+        dispatch({ type: 'reset', payload: 100 });
         break;
 
       case -100:
-        dispatch({ type: 'reset', payload: '-100' });
+        dispatch({ type: 'reset', payload: -100 });
         break;
     }
   };
