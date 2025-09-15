@@ -60,4 +60,16 @@ body {
       margin-top: 1.5rem;
     }
   }
+
+  .isNotANumber {
+    p {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: greenyellow;
+    }
+
+    span {
+      color: rgb(232, 123, 123);
+    }
+  }
 }

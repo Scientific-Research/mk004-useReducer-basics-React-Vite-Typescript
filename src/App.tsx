@@ -6,12 +6,14 @@ const initialState: IState = {
   count: 0,
   value: '',
   valueNaN: '',
+  booleanWert: false,
 };
 
 interface IState {
   count: number;
   value: string;
   valueNaN: string;
+  booleanWert: boolean;
 }
 
 interface IAction {
@@ -71,6 +73,7 @@ function App() {
   const handleSaveButton = () => {
     // dispatch({ type: 'save', payload: Number(e.target.value) });
     dispatch({ type: 'save', payload: state.value });
+    state.booleanWert = true;
     // console.log(typeof state.value);
     // console.log(state.value);
 
@@ -117,13 +120,16 @@ function App() {
           Save
         </button>
       </div>
-      <div>
-        {state.valueNaN &&
+      <div className="isNotANumber">
+        {state.booleanWert &&
           (isNaN(Number(state.value)) ? (
-            <p>{state.valueNaN} is not a number!</p>
+            <p>
+              <span>"{state.valueNaN}"</span> is Not a Number!
+            </p>
           ) : (
             ''
           ))}
+        {(state.booleanWert = false)}
       </div>
     </div>
   );
