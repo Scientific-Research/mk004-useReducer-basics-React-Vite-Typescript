@@ -7,6 +7,7 @@ const initialState: IState = {
   value: '',
   valueNaN: '',
   booleanWert: false,
+  emptyInput: '',
 };
 
 interface IState {
@@ -14,6 +15,7 @@ interface IState {
   value: string;
   valueNaN: string;
   booleanWert: boolean;
+  emptyInput: string;
 }
 
 interface IAction {
@@ -74,6 +76,7 @@ function App() {
     // dispatch({ type: 'save', payload: Number(e.target.value) });
     dispatch({ type: 'save', payload: state.value });
     state.booleanWert = true;
+    state.emptyInput = '';
     // console.log(typeof state.value);
     // console.log(state.value);
 
@@ -87,7 +90,8 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.value);
     // value = e.target.value;
-    dispatch({ type: 'input', payload: e.target.value });
+    state.emptyInput = e.target.value;
+    dispatch({ type: 'input', payload: state.emptyInput });
   };
 
   return (
@@ -112,6 +116,7 @@ function App() {
 
       <div className="inputSave">
         <input
+          value={state.emptyInput}
           className="input"
           type="text"
           onChange={(e) => handleInputChange(e)}
