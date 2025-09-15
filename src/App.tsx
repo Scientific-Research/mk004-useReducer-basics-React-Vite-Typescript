@@ -103,10 +103,11 @@ function App() {
     dispatch({ type: 'input', payload: state.emptyInput });
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement> | any) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      state.emptyInput = e.target.value;
+      state.emptyInput = e.currentTarget.value;
       dispatch({ type: 'input', payload: state.emptyInput });
+
       handleSaveButton();
     }
   };
