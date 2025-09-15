@@ -1,6 +1,6 @@
 // import './App.css';
 
-import { useReducer } from 'react';
+import { useRef, useReducer } from 'react';
 
 const initialState: IState = {
   count: 0,
@@ -46,6 +46,7 @@ const reducer = (state: IState, action: IAction) => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleIncreaseCount = () => {
     dispatch({ type: 'increment', payload: '0' });
@@ -75,8 +76,16 @@ function App() {
   const handleSaveButton = () => {
     // dispatch({ type: 'save', payload: Number(e.target.value) });
     dispatch({ type: 'save', payload: state.value });
+
+    // inputRef.current.value = '';
+
     state.booleanWert = true;
     state.emptyInput = '';
+
+    if (inputRef.current) {
+      inputRef.current.focus(); // Im Eingabefeld fokus setzen
+    }
+
     // console.log(typeof state.value);
     // console.log(state.value);
 
@@ -116,6 +125,7 @@ function App() {
 
       <div className="inputSave">
         <input
+          ref={inputRef}
           value={state.emptyInput}
           className="input"
           type="text"
@@ -123,7 +133,7 @@ function App() {
           placeholder="Enter a number here!"
           onChange={(e) => handleInputChange(e)}
         />
-        <button className="btnSave" onClick={() => handleSaveButton()}>
+        <button className="btnSave" onClick={handleSaveButton}>
           Save
         </button>
       </div>
