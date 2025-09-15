@@ -5,11 +5,13 @@ import { useReducer } from 'react';
 const initialState: IState = {
   count: 0,
   value: '',
+  valueNaN: '',
 };
 
 interface IState {
   count: number;
   value: string;
+  valueNaN: string;
 }
 
 interface IAction {
@@ -31,7 +33,8 @@ const reducer = (state: IState, action: IAction) => {
     _state.value = action.payload;
   } else if (action.type === 'save') {
     _state.count = Number(action.payload);
-    // _state.count = _state.value;
+    // _state.value = action.payload;
+    _state.valueNaN = _state.value;
   }
 
   return _state;
@@ -75,9 +78,7 @@ function App() {
 
     // Number.isNaN(state.value) ? <p>{state.value} is not a number!</p> : '';
 
-    isNaN(Number(state.value))
-      ? console.log(`${state.value} is not a number!`)
-      : console.log(`${state.value} is a number!`);
+    // isNaN(Number(state.value)) ? <p>{state.value} is not a number!</p> : '';
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,6 +116,14 @@ function App() {
         <button className="btnSave" onClick={() => handleSaveButton()}>
           Save
         </button>
+      </div>
+      <div>
+        {state.valueNaN &&
+          (isNaN(Number(state.value)) ? (
+            <p>{state.valueNaN} is not a number!</p>
+          ) : (
+            ''
+          ))}
       </div>
     </div>
   );
