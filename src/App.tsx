@@ -103,6 +103,14 @@ function App() {
     dispatch({ type: 'input', payload: state.emptyInput });
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement> | any) => {
+    if (e.key === 'Enter') {
+      state.emptyInput = e.target.value;
+      dispatch({ type: 'input', payload: state.emptyInput });
+      handleSaveButton();
+    }
+  };
+
   return (
     <div className="App">
       <h1>useReducer-Basics-React-Vite-Typescript</h1>
@@ -132,6 +140,7 @@ function App() {
           autoFocus
           placeholder="Enter a number here!"
           onChange={(e) => handleInputChange(e)}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
         <button className="btnSave" onClick={handleSaveButton}>
           Save
